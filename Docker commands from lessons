@@ -1,0 +1,15 @@
+#Create a container in the background
+sudo docker container run --publish 80:80 --detach nginx
+
+#List all containers
+sudo docker container ls
+
+#Stop container
+sudo docker container stop #Container ID#
+
+#Create a container and name it
+sudo docker container run --publish 80:80 --detach --name #Name# nginx
+
+#Delete the container(s)
+sudo docker container rm #Container ID# (can list multiple with a space between)
+
