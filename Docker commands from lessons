@@ -13,3 +13,19 @@ sudo docker container run --publish 80:80 --detach --name #Name# nginx
 #Delete the container(s)
 sudo docker container rm #Container ID# (can list multiple with a space between)
 
+# -p (--publish) opens port in Host:Container format
+
+#Show networks
+sudo docker network ls
+
+#Inspect a network
+sudo docker network inspect
+
+#Create a network
+sudo docker network create --driver
+
+#Attach a network to container
+sudo docker network connect
+
+#Detach a network from container
+sudo docker network disconnect
