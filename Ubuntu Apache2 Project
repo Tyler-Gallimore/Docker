@@ -27,3 +27,4 @@ echo "Hello, World!" > /var/www/html/index.html
 
 #Push container to docker hub repository
 docker container commit (container ID) (repository name):(tag name)
+docker push (repository name):(tag name)
