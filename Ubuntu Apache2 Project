@@ -1,0 +1,26 @@
+#Change ownership of docker to $USER
+sudo chown $USER /var/run/docker.sock
+
+#Download ubuntu image
+docker pull ubuntu
+
+#Create ubuntu container on port 80
+docker container run -p 80:80 -d ubuntu
+
+#List all containers
+docker container ls -a
+
+#Start ubuntu container with bash shell enabled
+docker container run -p 80:80 -d -it ubuntu
+
+#Update ubuntu inside container
+apt update
+
+#Install apache2
+apt install apache2
+
+#Start apache2 server
+service apache2 start
+
+#Edit html webpage
+echo "Hello, World!" > /var/www/html/index.html
