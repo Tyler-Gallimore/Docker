@@ -1,0 +1,44 @@
+#Check the base content files
+ls -l
+
+#Check the code written
+cat Dockerfile
+
+#Build a Docker image from the Dockerfile with a timer on each task
+time -p docker build -t (app name) .
+
+#Check the Docker image size
+docker images
+
+#Deploy the application's Docker container
+docker run -d base-app
+
+#Verify the container is running
+docker ps
+
+#Check the logs of the container
+docker logs (container name)
+
+#Edit Dockerfile with the following
+ubuntu:latest > apline:latest (reduces storage size)
+#comment out all apt-get
+RUN apk add openssh vim gcompat;exit 0 (Need to check Alpine documentation for package names)
+#comment out ENY ADMIN_USER="appadmin", RUN echo $ADMIN_USER > ./user-creds.txt, RUN unset ADMIN_USER
+RUN export ADMIN_USER="appadmin"\
+  && echo $ADMIN_USER > ./user-creds.txt \
+  && unset ADMIN_USER (makes all three commands into one)
+
+#Create a .dockerignore file
+vi .dockerignore > custom-app/*.txt (add a filter for all .txt files)
+
+#Build docker image with a timer
+time -p docker build -t (new name) .
+
+#Check size of the image
+docker images
+
+#Deploy new docker container
+docker run -d (new image)
+
+#Verify the new container is running
+docker ps
