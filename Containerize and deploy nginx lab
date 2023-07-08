@@ -1,0 +1,48 @@
+#Create the Dockerfile with vi
+
+#Base image set to ubuntu
+FROM ubuntu
+
+#Label instructions for meta-data information
+LABEL maintainer="Zeal Vora <instructors@kplabs.in>"
+
+#Update the ubuntu image
+RUN apt-get update
+
+#Install ngnix with -y to accept prompts
+RUN apt-get -y install nginx
+
+#List the port the application will be listening on
+EXPOSE 80/tcp
+
+#Set the default argument when container is started
+CMD ["nginx", "-g", "daemon off;"]
+
+#Save the file and close
+
+#Build the image (make sure the Dockerfile is in same directory)
+docker build -t nginx-image . (make sure . is at the end)
+
+#Confirm image was created
+docker images
+
+#Deploy nginx container
+docker run -d -p 8080:80 nginx-image
+
+#Confirm container is running
+docker ps
+
+#Test setup
+curl localhost:8080
+
+#Inspect the container
+docker inspect (container name)
+
+#Format the inspect to only output IPAddress
+docker inspect --format='{{.NetworkSettings.Networks.bridge.IPAddress}}' (container name)
+
+#Output the format to a text file named nginx_ip.txt
+docker inspect --format='{{.NetworkSettings.Networks.bridge.IPAddress}}' (container name) > nginx_ip.txt
+
+#Verify the content of nginx_ip.txt
+cat nginx_ip.txt
