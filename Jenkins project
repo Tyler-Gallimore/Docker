@@ -1,0 +1,20 @@
+#Pull Jenkins image from Docker Hub
+docker pull jenkins/jenkins
+
+#Determine what ports are needed to be opened
+docker image inspect jenkins/jenkins
+
+#Create Docker volume and container
+docker run -d -p 8080:8080 -p 50000:50000 --restart=on-failure -v jenkins_home:/var/jenkins_home jenkins/jenkins
+
+#Find volume names
+docker container ls
+
+#Retrieve admin password for Jenkins
+docker exec (container ID) cat /var/jenkins_home/secrets/initialAdminPassword
+
+#Sign into the Jenkins site hosted under localhost and setup a username/password
+
+#Create another account inside the Jenkins website
+
+#Launch another container and try to log in with the new account
