@@ -1,0 +1,5 @@
+#Setup the manager
+docker swarm init --advertise-addr Private IPv4
+
+#Copy/Paste the command it gives to the workers
+#Example: docker swarm join --token (token)
