@@ -1,0 +1,42 @@
+#Verify Swarm is availalbe
+docker swarm
+
+#Check current IP address, look for enp or eth
+ip addr
+
+#Create a Swarm with the init command and IP address
+docker swarm init --advertise-addr (IP)
+
+#Verify node information
+docker node ls
+
+#Deploy a service in Swarm for Nginx, set replicas to 2
+docker service create --replicas 2 --name nginx-service nginx:latest
+
+#Verify running service
+docker service ls
+
+#Verify Docker containers were created as part of the service
+docker ps
+
+#Stop one of the instances
+docker stop (container ID)
+
+#Verify if a new container has been created
+docker ps
+
+#Verify Swarm service status
+docker service ls
+
+#Scale the Swarm service from 2 to 5
+docker service update nginx-service --replicas=5
+
+#Verify containers and service
+docker ps
+docker service ls
+
+#Scale down service from 5 to 2
+docker service update nginx-service --replicas=2
+
+#Verify containers
+docker ps
