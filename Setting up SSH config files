@@ -1,6 +1,6 @@
 #Set security group for the EC2 instances to accept all traffic from the VPC IP/CIDR
 
-#Create or copy the SSH key file to a known location (example: ~/$USER/Downloads/keyfile.pem
+#Create or copy the SSH key file to a known location (example: ~/$USER/Downloads/keyfile.pem)
 
 #Create a config file located in the .ssh directory of the user account not /root/.ssh
 
