@@ -9,3 +9,37 @@ docker swarm leave
 
 #Leave swarm as manager
 docker swarm leave --force
+
+#Create nginx service with constraint for worker nodes only
+docker service create --name (app name) --constraint node.role==worker nginx
+
+#Remove constraint and add another for manager only
+docker service update --constraint-rm node.role==worker --constraint-add node.role==manager (app name)
+
+#Add label to node
+docker node update --label-add dmz=true (node name)
+
+#Constraint with custom label
+docker service create --name dmz-nginx --constraint node.labels.dmz==true --replicas 2 nginx
+
+#Place one task on each node
+docker service create --mode=global nginx
+
+#Place one task on each Worker
+docker service create --mode=global --constraint=node.role==worker nginx
+
+#Return all logs for a service
+docker service logs (servicename/id)
+
+#Return all logs for a single task
+docker service logs (task ID)
+
+#Return unformatted logs with no trunking
+docker service logs --raw --no-trunc (servicename/ID)
+
+#Only return last 50 log entries and all future logs
+docker service logs --tail 50 --follow (servicename/ID)
+
+#Return events from a date until now and future
+docker events --since 2017-12-01
+docker events since 2017-12-01T12:30:00
