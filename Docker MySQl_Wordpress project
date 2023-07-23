@@ -1,21 +1,3 @@
-Using the CLI:
 
-#Deploy a 3 node Docker Swarm cluster.
-  #Creating the Swarm using one master node and two worker nodes
-    #Setup the manager
-    docker swarm init --advertise-addr Private IPv4
-  
-    #Copy/Paste the command it gives to the workers
-    #Example: docker swarm join --token (token)
 
-Create 2 networks. One for frontend and another for backend.
-Create MySQL service
-associated with the backend network
-Only 1 replica
-Make the database service resilient and its data persistent across container restarts, use Docker Volumes.
-Create the Wordpress service
-Associated with the frontend network
-Should use port 80
-Accessible from the browser
-3 replicas
-Associated with the MySQL service
+
